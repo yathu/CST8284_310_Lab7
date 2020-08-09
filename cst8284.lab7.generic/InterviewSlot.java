@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Calendar;
@@ -5,34 +6,34 @@ import java.util.Calendar;
 public class InterviewSlot implements Comparable<InterviewSlot> {
 
     Calendar cal = Calendar.getInstance();
-    private Date startTime = cal.getTime();
-    private Integer duration;
+    private java.time.ZonedDateTime startTime;
+    private Duration duration;
 
-    public InterviewSlot(Date start, Integer d) {
-        setDuration(d);
-        setStartTime(start);
+    public InterviewSlot(java.time.ZonedDateTime startTime, Duration duration) {
+        setDuration(duration);
+        setStartTime(startTime);
 
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(java.time.ZonedDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public Integer getDuration() {
+    public Duration getDuration() {
         return duration;
     }
 
-    public Date getStartTime() {
+    public java.time.ZonedDateTime getStartTime() {
         return startTime;
     }
 
     @Override
     public String toString() {
-        return "Interview Start " + getStartTime() + "Duration :  " + getDuration();
+        return "Interview Start " + getStartTime() + "Duration :  " + getDuration().toMinutes();
     }
 
     @Override
